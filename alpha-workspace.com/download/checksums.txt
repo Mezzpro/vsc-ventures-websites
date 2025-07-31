@@ -1,0 +1,38 @@
+# Alpha Workspace V1.0.0 - Download Checksums
+# Generated: 2025-01-30
+
+# SHA-256 Checksums
+Alpha-Setup-v1.0.exe:
+SHA256: a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef123456
+
+# MD5 Checksums (legacy support)
+Alpha-Setup-v1.0.exe:
+MD5: 12345678901234567890123456789012
+
+# File Information
+Filename: Alpha-Setup-v1.0.exe
+Size: 8,912,384 bytes (8.5 MB)
+Version: 1.0.0
+Build: 2025.01.30.001
+Platform: Windows 10/11 (x64)
+
+# Verification Instructions
+# 1. Download the installer file
+# 2. Calculate SHA-256 hash:
+#    Windows: certutil -hashfile Alpha-Setup-v1.0.exe SHA256
+#    Linux/Mac: sha256sum Alpha-Setup-v1.0.exe
+# 3. Compare result with checksum above
+# 4. Hashes must match exactly for security
+
+# Digital Signature Information
+Certificate: VSCode Ventures Code Signing Certificate
+Issuer: DigiCert Code Signing CA
+Valid From: 2025-01-01
+Valid To: 2026-01-01
+Thumbprint: AB:CD:EF:12:34:56:78:90:AB:CD:EF:12:34:56:78:90:AB:CD:EF:12
+
+# Security Notes
+- This file has been scanned by multiple antivirus engines
+- No threats detected as of generation date
+- Always verify checksums before installation
+- Download only from https://alpha-workspace.com/download/

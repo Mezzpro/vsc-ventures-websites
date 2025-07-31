@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Alpha Workspace - Distraction-free writing and productivity environment. Clean, minimal interface designed for writers, content creators, and anyone who values focus.">
+    <title>Alpha Workspace - Distraction-Free Writing & Productivity</title>
+    
+    <!-- Performance optimizations -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Venture-specific styling -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Shared analytics and security -->
+    <script src="../shared/analytics/venture-analytics.js" defer></script>
+    <script src="../shared/security/download-security.js" defer></script>
+    
+    <!-- SEO meta tags -->
+    <meta property="og:title" content="Alpha Workspace - Distraction-Free Writing & Productivity">
+    <meta property="og:description" content="Clean, minimal writing environment designed for focus. No distractions, just pure productivity.">
+    <meta property="og:image" content="https://alpha-workspace.com/images/alpha-og.png">
+    <meta property="og:url" content="https://alpha-workspace.com">
+    <meta property="og:type" content="website">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Alpha Workspace - Distraction-Free Writing">
+    <meta name="twitter:description" content="Clean, minimal writing environment designed for focus. No distractions, just pure productivity.">
+    <meta name="twitter:image" content="https://alpha-workspace.com/images/alpha-og.png">
+    
+    <link rel="canonical" href="https://alpha-workspace.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Security headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    
+    <!-- Keywords for SEO -->
+    <meta name="keywords" content="minimalist writing app, distraction free editor, clean writing interface, productivity tool, focus writing, minimal text editor">
+</head>
+<body>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span>✨ Free & Open Source</span>
+                </div>
+                <h1 class="hero-title">Write without distractions</h1>
+                <p class="hero-subtitle">
+                    Alpha Workspace provides a clean, minimal environment designed for writers, 
+                    content creators, and anyone who values focus over features.
+                </p>
+                <div class="hero-cta">
+                    <button id="primary-download" class="cta-button primary" data-track="hero_download">
+                        Download Alpha Workspace
+                    </button>
+                    <p class="cta-details">Free • Windows 10/11 • No registration required</p>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="download-count">12,847</span>
+                        <span class="stat-label">Downloads</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">4.8★</span>
+                        <span class="stat-label">User Rating</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="workspace-preview">
+                    <div class="window-chrome">
+                        <div class="window-controls">
+                            <span class="control minimize"></span>
+                            <span class="control maximize"></span>
+                            <span class="control close"></span>
+                        </div>
+                        <div class="window-title">Alpha Workspace</div>
+                    </div>
+                    <div class="editor-area">
+                        <div class="typing-demo">
+                            <p class="demo-text typing-effect">
+                                <span class="cursor">|</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features" data-section="features">
+        <div class="container">
+            <h2 class="section-title">Everything you need, nothing you don't</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Focus Mode</h3>
+                    <p>Distraction-free writing environment that helps you concentrate on what matters most - your words.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Clean Interface</h3>
+                    <p>Minimal, elegant design that puts your content center stage. No clutter, no unnecessary buttons.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Lightning Fast</h3>
+                    <p>Optimized for performance. Launch instantly and write smoothly without lag or delays.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌙</div>
+                    <h3>Zen Themes</h3>
+                    <p>Carefully crafted themes designed to reduce eye strain and enhance your writing experience.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💾</div>
+                    <h3>Auto-Save</h3>
+                    <p>Never lose your work. Automatic saving ensures your progress is always protected.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Privacy First</h3>
+                    <p>Your work stays on your computer. No cloud uploads, no tracking, no data collection.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="social-proof" data-section="testimonials">
+        <div class="container">
+            <h2 class="section-title">Loved by writers everywhere</h2>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        "Alpha Workspace has transformed how I write. The clean interface helps me focus on my ideas instead of getting distracted by features I don't need."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <div class="author-name">Sarah Chen</div>
+                            <div class="author-title">Content Creator</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        "Finally, a writing app that understands minimalism. No bloat, no distractions - just pure writing bliss."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <div class="author-name">Marcus Rivera</div>
+                            <div class="author-title">Novelist</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        "I've tried dozens of writing apps, but Alpha Workspace is the only one that truly gets out of my way and lets me write."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <div class="author-name">Emma Thompson</div>
+                            <div class="author-title">Technical Writer</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download-section" data-section="download">
+        <div class="container">
+            <h2 class="section-title">Get started in seconds</h2>
+            <div class="download-container">
+                <div class="download-info">
+                    <h3>Alpha-Setup-v1.0.exe</h3>
+                    <div class="file-details">
+                        <span class="detail">Size: 8.5 MB</span>
+                        <span class="detail">Version: 1.0.0</span>
+                        <span class="detail">Compatible: Windows 10/11</span>
+                    </div>
+                </div>
+                <div class="download-actions">
+                    <button id="download-btn" class="download-button primary" data-track="main_download">
+                        ⬇ Download Alpha Workspace
+                    </button>
+                    <div class="security-badges">
+                        <span class="badge">✓ Virus scanned</span>
+                        <span class="badge">✓ Digitally signed</span>
+                        <span class="badge">✓ Secure download</span>
+                    </div>
+                </div>
+            </div>
+            <div class="installation-steps">
+                <h3>Simple installation</h3>
+                <ol>
+                    <li>Click download button above</li>
+                    <li>Run the downloaded installer</li>
+                    <li>Follow the setup wizard</li>
+                    <li>Launch Alpha Workspace from desktop</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Alpha Section -->
+    <section class="why-choose" data-section="benefits">
+        <div class="container">
+            <div class="why-choose-content">
+                <div class="why-choose-text">
+                    <h2>Why writers choose Alpha Workspace</h2>
+                    <div class="benefit-list">
+                        <div class="benefit">
+                            <div class="benefit-icon">✨</div>
+                            <div class="benefit-text">
+                                <strong>Distraction-free environment</strong> - No notifications, no social media integration, no unnecessary features to pull your attention away from writing.
+                            </div>
+                        </div>
+                        <div class="benefit">
+                            <div class="benefit-icon">⚡</div>
+                            <div class="benefit-text">
+                                <strong>Instant startup</strong> - Launch in under 2 seconds and start writing immediately. No loading screens or splash pages.
+                            </div>
+                        </div>
+                        <div class="benefit">
+                            <div class="benefit-icon">🎯</div>
+                            <div class="benefit-text">
+                                <strong>Built for focus</strong> - Every design decision prioritizes your ability to concentrate and produce your best work.
+                            </div>
+                        </div>
+                        <div class="benefit">
+                            <div class="benefit-icon">🔒</div>
+                            <div class="benefit-text">
+                                <strong>Complete privacy</strong> - Your documents never leave your computer. No cloud sync means no privacy concerns.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="why-choose-visual">
+                    <div class="comparison-chart">
+                        <div class="chart-title">Alpha vs Others</div>
+                        <div class="chart-row">
+                            <span class="metric">Startup Time</span>
+                            <span class="alpha-bar">1.8s</span>
+                            <span class="others-bar">8.3s</span>
+                        </div>
+                        <div class="chart-row">
+                            <span class="metric">Memory Usage</span>
+                            <span class="alpha-bar">45MB</span>
+                            <span class="others-bar">280MB</span>
+                        </div>
+                        <div class="chart-row">
+                            <span class="metric">Feature Bloat</span>
+                            <span class="alpha-bar">Zero</span>
+                            <span class="others-bar">Tons</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Alpha Workspace</h4>
+                    <p>Distraction-free writing and productivity environment designed for focus and simplicity.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" data-track="social_twitter">Twitter</a>
+                        <a href="#" class="social-link" data-track="social_github">GitHub</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="/support/" data-track="footer_support">Help Center</a></li>
+                        <li><a href="/support/installation/" data-track="footer_install">Installation Guide</a></li>
+                        <li><a href="/support/faq/" data-track="footer_faq">FAQ</a></li>
+                        <li><a href="/changelog/" data-track="footer_changelog">Changelog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/about/" data-track="footer_about">About</a></li>
+                        <li><a href="/privacy/" data-track="footer_privacy">Privacy Policy</a></li>
+                        <li><a href="/terms/" data-track="footer_terms">Terms of Service</a></li>
+                        <li><a href="/contact/" data-track="footer_contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Alpha Workspace. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Honeypot for bot detection -->
+    <input type="text" id="honeypot" style="position: absolute; left: -9999px; visibility: hidden;" tabindex="-1" autocomplete="off">
+
+    <!-- Download tracking and analytics initialization -->
+    <script>
+        // Initialize venture-specific analytics
+        window.ventureConfig = {
+            name: 'Alpha',
+            version: '1.0.0',
+            downloadUrl: '/download/Alpha-Setup-v1.0.exe'
+        };
+        
+        // Typing effect for demo
+        const demoTexts = [
+            "Once upon a time, in a land far away...",
+            "The quick brown fox jumps over the lazy dog.",
+            "To be or not to be, that is the question.",
+            "In a hole in the ground there lived a hobbit.",
+            "It was the best of times, it was the worst of times."
+        ];
+        
+        let currentText = 0;
+        let currentChar = 0;
+        let isDeleting = false;
+        
+        function typeEffect() {
+            const textElement = document.querySelector('.typing-effect');
+            const cursorElement = document.querySelector('.cursor');
+            const text = demoTexts[currentText];
+            
+            if (!isDeleting && currentChar < text.length) {
+                textElement.textContent = text.substring(0, currentChar + 1);
+                currentChar++;
+                setTimeout(typeEffect, 50);
+            } else if (isDeleting && currentChar > 0) {
+                textElement.textContent = text.substring(0, currentChar - 1);
+                currentChar--;
+                setTimeout(typeEffect, 30);
+            } else if (!isDeleting && currentChar === text.length) {
+                setTimeout(() => {
+                    isDeleting = true;
+                    typeEffect();
+                }, 2000);
+            } else if (isDeleting && currentChar === 0) {
+                isDeleting = false;
+                currentText = (currentText + 1) % demoTexts.length;
+                setTimeout(typeEffect, 500);
+            }
+            
+            textElement.appendChild(cursorElement);
+        }
+        
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize analytics
+            window.ventureAnalytics = new VentureAnalytics();
+            window.ventureAnalytics.init();
+            
+            // Initialize download manager
+            new DownloadManager(window.ventureConfig).init();
+            
+            // Start typing effect
+            setTimeout(typeEffect, 1000);
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

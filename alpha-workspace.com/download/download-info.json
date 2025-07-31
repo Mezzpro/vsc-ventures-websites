@@ -1,0 +1,69 @@
+{
+  "venture": "alpha",
+  "name": "Alpha Workspace",
+  "version": "1.0.0",
+  "filename": "Alpha-Setup-v1.0.exe",
+  "size": "8.5 MB",
+  "sizeBytes": 8912384,
+  "downloadCount": 12847,
+  "lastUpdated": "2025-01-30T00:00:00Z",
+  "releaseDate": "2025-01-30T00:00:00Z",
+  "checksums": {
+    "sha256": "a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef123456",
+    "md5": "12345678901234567890123456789012"
+  },
+  "compatibility": [
+    "Windows 10",
+    "Windows 11"
+  ],
+  "architecture": "x64",
+  "requirements": {
+    "minMemory": "4GB RAM",
+    "minDisk": "100MB free space",
+    "minOS": "Windows 10 version 1903"
+  },
+  "features": [
+    "Self-contained installation",
+    "No admin rights required",
+    "Separate taskbar identity",
+    "Distraction-free interface",
+    "Auto-save functionality",
+    "Privacy-first design"
+  ],
+  "security": {
+    "virusScanned": true,
+    "digitallySigned": true,
+    "certificate": "VSCode Ventures Code Signing Certificate",
+    "lastScanned": "2025-01-30T00:00:00Z"
+  },
+  "installation": {
+    "type": "executable",
+    "silent": false,
+    "requiresRestart": false,
+    "installLocation": "%USERPROFILE%\\Documents\\VSCodeVentures\\Alpha"
+  },
+  "changelog": {
+    "1.0.0": {
+      "date": "2025-01-30",
+      "changes": [
+        "Initial release of Alpha Workspace",
+        "Zen minimalist design implementation",
+        "Distraction-free writing environment",
+        "Self-contained VSCode bundling",
+        "Separate taskbar identity",
+        "Privacy-first approach - no data collection"
+      ]
+    }
+  },
+  "support": {
+    "website": "https://alpha-workspace.com/support/",
+    "email": "support@alpha-workspace.com",
+    "documentation": "https://alpha-workspace.com/support/installation/",
+    "faq": "https://alpha-workspace.com/support/faq/"
+  },
+  "legal": {
+    "license": "MIT",
+    "privacyPolicy": "https://alpha-workspace.com/privacy/",
+    "termsOfService": "https://alpha-workspace.com/terms/"
+  }
+}

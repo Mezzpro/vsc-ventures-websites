@@ -1,0 +1,177 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Build websites
+        run: npm run build
+        
+      - name: Run tests
+        run: npm run test
+        
+      - name: Deploy Alpha Workspace to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: alpha-workspace
+          directory: dist/alpha-workspace.com
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+        if: github.ref == 'refs/heads/main'
+        
+      - name: Deploy Cyberpunk Code to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: cyberpunk-code
+          directory: dist/cyberpunk-code.com
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+        if: github.ref == 'refs/heads/main'
+        
+      - name: Deploy Holographic Pro to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: holographic-pro
+          directory: dist/holographic-pro.com
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+        if: github.ref == 'refs/heads/main'
+        
+      - name: Deploy Retro Terminal to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: retro-terminal
+          directory: dist/retro-terminal.com
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+        if: github.ref == 'refs/heads/main'
+        
+      - name: Deploy Platform Discovery to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: vsc-ventures
+          directory: dist/vsc-ventures.com
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+        if: github.ref == 'refs/heads/main'
+        
+      - name: Update download analytics
+        run: npm run update-analytics
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          ANALYTICS_API_KEY: ${{ secrets.ANALYTICS_API_KEY }}
+        if: github.ref == 'refs/heads/main'
+        
+      - name: Notify deployment status
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          channel: '#deployments'
+          text: 'VSCode Ventures V5 deployment completed'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+        if: always() && github.ref == 'refs/heads/main'
+
+  security-scan:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Run security scan
+        uses: securecodewarrior/github-action-add-sarif@v1
+        with:
+          sarif-file: 'security-scan.sarif'
+          
+      - name: Check for vulnerabilities
+        run: |
+          npm audit --audit-level moderate
+          
+      - name: Validate HTML
+        run: |
+          npx html-validate alpha-workspace.com/index.html
+          npx html-validate cyberpunk-code.com/index.html
+          npx html-validate holographic-pro.com/index.html
+          npx html-validate retro-terminal.com/index.html
+          npx html-validate vsc-ventures.com/index.html
+
+  performance-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          
+      - name: Install Lighthouse CI
+        run: npm install -g @lhci/cli@0.12.x
+        
+      - name: Run Lighthouse CI
+        run: |
+          lhci autorun --config=.lighthouserc.json
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+          
+      - name: Performance budget check
+        run: |
+          # Check that all pages meet performance requirements
+          # - Page Load Time: <2 seconds
+          # - Time to Interactive: <3 seconds
+          # - Cumulative Layout Shift: <0.1
+          npm run performance-check
+
+  seo-audit:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: SEO meta tag validation
+        run: |
+          # Validate all required meta tags are present
+          python scripts/validate-seo.py
+          
+      - name: Schema.org validation
+        run: |
+          # Validate structured data
+          npm run validate-schema
+          
+      - name: Sitemap generation
+        run: |
+          # Generate sitemaps for all ventures
+          npm run generate-sitemaps
+          
+      - name: Robots.txt validation
+        run: |
+          # Validate robots.txt files
+          npm run validate-robots

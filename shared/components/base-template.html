@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{DESCRIPTION}}">
+    <title>{{TITLE}}</title>
+    
+    <!-- Performance optimizations -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Venture-specific styling -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Shared analytics and security -->
+    <script src="../shared/analytics/venture-analytics.js" defer></script>
+    <script src="../shared/security/download-security.js" defer></script>
+    
+    <!-- SEO meta tags -->
+    <meta property="og:title" content="{{TITLE}}">
+    <meta property="og:description" content="{{DESCRIPTION}}">
+    <meta property="og:image" content="{{OG_IMAGE}}">
+    <meta property="og:url" content="{{CANONICAL_URL}}">
+    <meta property="og:type" content="website">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{TITLE}}">
+    <meta name="twitter:description" content="{{DESCRIPTION}}">
+    <meta name="twitter:image" content="{{OG_IMAGE}}">
+    
+    <link rel="canonical" href="{{CANONICAL_URL}}">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Security headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+</head>
+<body>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">{{HERO_TITLE}}</h1>
+                <p class="hero-subtitle">{{HERO_SUBTITLE}}</p>
+                <div class="hero-cta">
+                    <button id="primary-download" class="cta-button primary">
+                        {{CTA_TEXT}}
+                    </button>
+                    <p class="cta-details">Free • Windows 10/11 • No registration required</p>
+                </div>
+            </div>
+            <div class="hero-visual">
+                {{HERO_VISUAL}}
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">{{FEATURES_TITLE}}</h2>
+            <div class="features-grid">
+                {{FEATURES_CONTENT}}
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="social-proof">
+        <div class="container">
+            <h2 class="section-title">{{SOCIAL_PROOF_TITLE}}</h2>
+            <div class="testimonials">
+                {{TESTIMONIALS_CONTENT}}
+            </div>
+            <div class="download-stats">
+                <div class="stat">
+                    <span class="stat-number" id="download-count">{{DOWNLOAD_COUNT}}</span>
+                    <span class="stat-label">Downloads</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">{{USER_RATING}}</span>
+                    <span class="stat-label">User Rating</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download-section">
+        <div class="container">
+            <h2 class="section-title">Get Started in Seconds</h2>
+            <div class="download-container">
+                <div class="download-info">
+                    <h3>{{VENTURE_NAME}}-Setup-v1.0.exe</h3>
+                    <div class="file-details">
+                        <span class="detail">Size: 8.5 MB</span>
+                        <span class="detail">Version: 1.0.0</span>
+                        <span class="detail">Compatible: Windows 10/11</span>
+                    </div>
+                </div>
+                <div class="download-actions">
+                    <button id="download-btn" class="download-button primary">
+                        ⬇ Download {{VENTURE_NAME}}
+                    </button>
+                    <div class="security-badges">
+                        <span class="badge">✓ Virus scanned</span>
+                        <span class="badge">✓ Digitally signed</span>
+                        <span class="badge">✓ Secure download</span>
+                    </div>
+                </div>
+            </div>
+            <div class="installation-steps">
+                <h3>Installation Instructions</h3>
+                <ol>
+                    <li>Click download button above</li>
+                    <li>Run the downloaded installer</li>
+                    <li>Follow the setup wizard</li>
+                    <li>Launch {{VENTURE_NAME}} from desktop</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>{{VENTURE_NAME}}</h4>
+                    <p>{{FOOTER_DESCRIPTION}}</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="/support/">Help Center</a></li>
+                        <li><a href="/support/installation/">Installation Guide</a></li>
+                        <li><a href="/support/faq/">FAQ</a></li>
+                        <li><a href="/changelog/">Changelog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/about/">About</a></li>
+                        <li><a href="/privacy/">Privacy Policy</a></li>
+                        <li><a href="/terms/">Terms of Service</a></li>
+                        <li><a href="/contact/">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 {{VENTURE_NAME}}. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Download tracking and analytics initialization -->
+    <script>
+        // Initialize venture-specific analytics
+        window.ventureConfig = {
+            name: '{{VENTURE_NAME_LOWER}}',
+            version: '1.0.0',
+            downloadUrl: '/download/{{VENTURE_NAME}}-Setup-v1.0.exe'
+        };
+        
+        // Initialize download manager
+        document.addEventListener('DOMContentLoaded', function() {
+            new VentureAnalytics().init();
+            new DownloadManager(window.ventureConfig).init();
+        });
+    </script>
+</body>
+</html>

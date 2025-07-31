@@ -1,0 +1,111 @@
+{
+  "name": "vsc-ventures-websites",
+  "version": "5.0.0",
+  "description": "Multi-venture web distribution system for VSCode Ventures V5",
+  "main": "build.js",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "dev": "node scripts/dev-server.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint . --ext .js,.html",
+    "lint:fix": "eslint . --ext .js,.html --fix",
+    "validate-html": "html-validate **/*.html",
+    "validate-css": "stylelint **/*.css",
+    "validate-seo": "node scripts/validate-seo.js",
+    "validate-schema": "node scripts/validate-schema.js",
+    "validate-robots": "node scripts/validate-robots.js",
+    "generate-sitemaps": "node scripts/generate-sitemaps.js",
+    "performance-check": "node scripts/performance-check.js",
+    "update-analytics": "node scripts/update-analytics.js",
+    "optimize-images": "node scripts/optimize-images.js",
+    "clean": "rimraf dist",
+    "start": "npm run dev",
+    "deploy": "npm run build && npm run test"
+  },
+  "keywords": [
+    "vscode",
+    "workspace",
+    "ventures",
+    "web-distribution",
+    "cloudflare",
+    "analytics"
+  ],
+  "author": "VSCode Ventures Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@lhci/cli": "^0.12.0",
+    "eslint": "^8.57.0",
+    "html-validate": "^8.11.1",
+    "jest": "^29.7.0",
+    "rimraf": "^5.0.5",
+    "stylelint": "^16.2.1",
+    "express": "^4.18.2",
+    "chokidar": "^3.6.0",
+    "fs-extra": "^11.2.0",
+    "glob": "^10.3.10",
+    "chalk": "^5.3.0",
+    "ora": "^8.0.1"
+  },
+  "dependencies": {
+    "web-vitals": "^3.5.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vscode-ventures/websites.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vscode-ventures/websites/issues"
+  },
+  "homepage": "https://vsc-ventures.com",
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "jest": {
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": ["<rootDir>/test/setup.js"],
+    "testMatch": [
+      "<rootDir>/test/**/*.test.js"
+    ],
+    "collectCoverageFrom": [
+      "shared/**/*.js",
+      "scripts/**/*.js",
+      "!**/node_modules/**"
+    ]
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "node": true,
+      "es2022": true
+    },
+    "extends": [
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2022,
+      "sourceType": "module"
+    },
+    "rules": {
+      "no-console": "warn",
+      "no-unused-vars": "error",
+      "prefer-const": "error",
+      "no-var": "error"
+    }
+  },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-standard"
+    ],
+    "rules": {
+      "custom-property-pattern": null,
+      "selector-class-pattern": null
+    }
+  }
+}
