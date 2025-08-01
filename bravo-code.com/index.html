@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bravo Code - Matrix-Style Development Environment</title>
+    <meta name="description" content="Experience coding like a hacker with Bravo Code - the ultimate cyberpunk development environment featuring Matrix-style terminal aesthetics and neon green on black themes.">
+    <meta name="keywords" content="cyberpunk code editor, matrix coding environment, hacker theme, dark coding IDE, neon green terminal">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: #000000;
+            color: #00ff41;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Matrix Animation Background */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: #000000;
+        }
+
+        .matrix-bg canvas {
+            display: block;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(0, 0, 0, 0.9);
+            border-bottom: 2px solid #00ff41;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #00ff41;
+            text-shadow: 0 0 10px #00ff41;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #00cc33;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #00ff41;
+            text-shadow: 0 0 5px #00ff41;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px #00ff41;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px #00ff41; }
+            to { text-shadow: 0 0 30px #00ff41, 0 0 40px #00ff41; }
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: #00cc33;
+            max-width: 600px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #000000, #003300);
+            color: #00ff41;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border: 2px solid #00ff41;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 5px #00ff41;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(45deg, #003300, #006600);
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.6);
+            transform: translateY(-2px);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #00ff41;
+            text-shadow: 0 0 10px #00ff41;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(0, 51, 0, 0.2);
+            border: 1px solid #00ff41;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            background: rgba(0, 51, 0, 0.4);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            color: #00ff41;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-card p {
+            color: #00cc33;
+            line-height: 1.6;
+        }
+
+        /* Terminal Demo Section */
+        .terminal-demo {
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid #00ff41;
+            border-radius: 10px;
+            margin: 4rem 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            overflow: hidden;
+        }
+
+        .terminal-header {
+            background: #003300;
+            padding: 0.5rem 1rem;
+            border-bottom: 1px solid #00ff41;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #00ff41;
+        }
+
+        .terminal-content {
+            padding: 2rem;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+
+        .terminal-line {
+            margin-bottom: 0.5rem;
+        }
+
+        .terminal-prompt {
+            color: #00ff41;
+        }
+
+        .terminal-command {
+            color: #00cc33;
+        }
+
+        .terminal-output {
+            color: #009922;
+        }
+
+        /* Download Section */
+        .download {
+            background: rgba(0, 51, 0, 0.1);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .download h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #00ff41;
+            text-shadow: 0 0 10px #00ff41;
+        }
+
+        .download-info {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            color: #00cc33;
+        }
+
+        .security-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .security-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #00ff41;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.9);
+            border-top: 2px solid #00ff41;
+            padding: 2rem;
+            text-align: center;
+            color: #00cc33;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #00cc33;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #00ff41;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="matrix-bg">
+        <canvas id="matrix-canvas"></canvas>
+    </div>
+
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">BRAVO_CODE</div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#demo">Demo</a></li>
+                <li><a href="#download">Download</a></li>
+                <li><a href="#support">Support</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>BRAVO CODE</h1>
+            <p>Enter the Matrix of development. Code like a hacker with our cyberpunk-themed IDE featuring authentic terminal aesthetics and neon green syntax highlighting.</p>
+            <a href="#download" class="cta-button">⟩ JACK IN NOW</a>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <h2>SYSTEM FEATURES</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Matrix Terminal</h3>
+                <p>Authentic green-on-black terminal experience with Matrix-style character effects and customizable neon highlights.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Hacker Typography</h3>
+                <p>Optimized monospace fonts with bold styling and perfect letter spacing for maximum readability in dark environments.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Cyberpunk Syntax</h3>
+                <p>Custom syntax highlighting in various shades of green, creating the perfect cyberpunk coding atmosphere.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Stealth Mode</h3>
+                <p>Minimal UI distractions, hidden elements, and focus-first design for deep concentration and flow state.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Night Vision</h3>
+                <p>Perfectly calibrated for low-light environments with reduced eye strain during long coding sessions.</p>
+            </div>
+            <div class="feature-card">
+                <h3>System Integration</h3>
+                <p>Seamless Git integration, terminal access, and development workflow optimization for modern hackers.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="demo" class="terminal-demo">
+        <div class="terminal-header">
+            <div class="terminal-dot"></div>
+            <div class="terminal-dot"></div>
+            <div class="terminal-dot"></div>
+            <span style="color: #00ff41; margin-left: 1rem;">bravo@matrix:~$</span>
+        </div>
+        <div class="terminal-content">
+            <div class="terminal-line">
+                <span class="terminal-prompt">bravo@matrix:~$</span> 
+                <span class="terminal-command">code --theme matrix</span>
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-output">Initializing Bravo Code Environment...</span>
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-output">Loading cyberpunk syntax highlighting...</span>
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-output">Matrix terminal theme activated.</span>
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-output">Ready to jack in. Welcome to the Matrix.</span>
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-prompt">bravo@matrix:~$</span> 
+                <span class="terminal-command">_</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="download" class="download">
+        <h2>DOWNLOAD BRAVO CODE</h2>
+        <div class="download-info">
+            <p>Get the complete Bravo Code cyberpunk development environment. Self-contained installer with bundled VSCode and Matrix theme configuration.</p>
+        </div>
+        
+        <div class="security-badges">
+            <div class="security-badge">
+                <span>✓</span>
+                <span>Virus Scanned</span>
+            </div>
+            <div class="security-badge">
+                <span>✓</span>
+                <span>Digitally Signed</span>
+            </div>
+            <div class="security-badge">
+                <span>✓</span>
+                <span>Windows 10/11</span>
+            </div>
+            <div class="security-badge">
+                <span>✓</span>
+                <span>1.9MB Download</span>
+            </div>
+        </div>
+
+        <a href="download/Bravo-V4-Full-SelfContained-Setup-V3Pattern.exe" class="cta-button">
+            ⬇ DOWNLOAD BRAVO CODE
+        </a>
+        
+        <div style="margin-top: 2rem; color: #009922;">
+            <p>Version 4.0.0 | Released Today | Free Forever</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#installation">Installation Guide</a>
+            <a href="#support">Support</a>
+            <a href="#changelog">Changelog</a>
+            <a href="#privacy">Privacy</a>
+            <a href="#terms">Terms</a>
+        </div>
+        <p>&copy; 2025 Bravo Code. All rights reserved. | Built for hackers, by hackers.</p>
+    </footer>
+
+    <script>
+        // Matrix Rain Animation
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const matrix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%+-/~{[|`]}";
+        const matrixArray = matrix.split("");
+
+        const fontSize = 10;
+        const columns = canvas.width / fontSize;
+
+        const drops = [];
+        for (let x = 0; x < columns; x++) {
+            drops[x] = 1;
+        }
+
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#00ff41';
+            ctx.font = fontSize + 'px courier';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = matrixArray[Math.floor(Math.random() * matrixArray.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(draw, 35);
+
+        // Resize canvas on window resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

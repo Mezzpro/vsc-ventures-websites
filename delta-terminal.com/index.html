@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delta Terminal - Vintage Computing Experience</title>
+    <meta name="description" content="Relive the golden age of computing with Delta Terminal - authentic 1980s amber terminal interface, vintage aesthetics, and classic monospace typography.">
+    <meta name="keywords" content="retro terminal, vintage computing, 1980s interface, amber terminal, classic programming, nostalgic IDE">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IBM Plex Mono', 'Courier New', monospace;
+            background: #1a0f06;
+            color: #ffb000;
+            line-height: 1.4;
+            overflow-x: hidden;
+            font-weight: normal;
+        }
+
+        /* CRT Monitor Effect */
+        .crt-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: #1a0f06;
+            background-image: 
+                linear-gradient(transparent 50%, rgba(255, 176, 0, 0.02) 50%);
+            background-size: 100% 2px;
+            animation: crt-flicker 0.15s infinite linear;
+        }
+
+        .crt-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(26, 15, 6, 0.8) 100%);
+            pointer-events: none;
+        }
+
+        @keyframes crt-flicker {
+            0% { opacity: 1; }
+            98% { opacity: 1; }
+            99% { opacity: 0.98; }
+            100% { opacity: 1; }
+        }
+
+        /* Header */
+        .header {
+            background: #2b1810;
+            border-bottom: 3px solid #ffb000;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ffb000;
+            text-shadow: 2px 2px 0px #cc8800;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #cc8800;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover {
+            color: #ffb000;
+            text-shadow: 0 0 5px #ffb000;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            border: 2px solid #ffb000;
+            background: rgba(45, 24, 16, 0.8);
+            padding: 3rem;
+            box-shadow: 
+                inset 0 0 20px rgba(255, 176, 0, 0.1),
+                0 0 30px rgba(255, 176, 0, 0.2);
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: #ffb000;
+            text-shadow: 2px 2px 0px #cc8800;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 3px;
+            animation: retro-glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes retro-glow {
+            from { text-shadow: 2px 2px 0px #cc8800, 0 0 10px #ffb000; }
+            to { text-shadow: 2px 2px 0px #cc8800, 0 0 20px #ffb000, 0 0 30px #ffb000; }
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #e6a000;
+            line-height: 1.6;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: #cc8800;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ffb000;
+            color: #1a0f06;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border: 3px solid #cc8800;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 
+                4px 4px 0px #cc8800,
+                0 0 20px rgba(255, 176, 0, 0.3);
+        }
+
+        .cta-button:hover {
+            background: #cc8800;
+            color: #ffffff;
+            box-shadow: 
+                6px 6px 0px #996600,
+                0 0 30px rgba(255, 176, 0, 0.5);
+            transform: translate(-2px, -2px);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(31, 18, 8, 0.6);
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #ffb000;
+            text-shadow: 2px 2px 0px #cc8800;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: #3d251a;
+            border: 2px solid #ffb000;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 4px 4px 0px #cc8800;
+        }
+
+        .feature-card:hover {
+            background: #4d2f1a;
+            box-shadow: 
+                6px 6px 0px #cc8800,
+                0 0 20px rgba(255, 176, 0, 0.3);
+            transform: translate(-2px, -2px);
+        }
+
+        .feature-card h3 {
+            color: #ffb000;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            font-family: 'Courier New', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .feature-card p {
+            color: #e6a000;
+            line-height: 1.6;
+        }
+
+        /* Terminal Demo Section */
+        .terminal-demo {
+            background: #1a0f06;
+            border: 3px solid #ffb000;
+            margin: 4rem 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 
+                8px 8px 0px #cc8800,
+                0 0 30px rgba(255, 176, 0, 0.3);
+        }
+
+        .terminal-header {
+            background: #ffb000;
+            color: #1a0f06;
+            padding: 0.5rem 1rem;
+            border-bottom: 2px solid #cc8800;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .terminal-content {
+            padding: 2rem;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            line-height: 1.4;
+            background: #2b1810;
+        }
+
+        .terminal-line {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .terminal-prompt {
+            color: #ffb000;
+            margin-right: 1rem;
+            font-weight: bold;
+        }
+
+        .terminal-command {
+            color: #e6a000;
+        }
+
+        .terminal-output {
+            color: #cc8800;
+            margin-left: 2rem;
+        }
+
+        .cursor-blink {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        /* Download Section */
+        .download {
+            background: rgba(45, 24, 16, 0.8);
+            border: 3px solid #ffb000;
+            margin: 4rem 2rem;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 
+                8px 8px 0px #cc8800,
+                0 0 30px rgba(255, 176, 0, 0.3);
+        }
+
+        .download h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #ffb000;
+            text-shadow: 2px 2px 0px #cc8800;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .download-info {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            color: #e6a000;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .system-specs {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .spec-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: #ffb000;
+            font-family: 'Courier New', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .spec-value {
+            color: #cc8800;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #2b1810;
+            border-top: 3px solid #ffb000;
+            padding: 2rem;
+            text-align: center;
+            color: #cc8800;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #cc8800;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-links a:hover {
+            color: #ffb000;
+        }
+
+        .vintage-badge {
+            margin-top: 1rem;
+            color: #996600;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .system-specs {
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="crt-container"></div>
+
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">DELTA_TERMINAL</div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#demo">Terminal</a></li>
+                <li><a href="#download">Download</a></li>
+                <li><a href="#manual">Manual</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>DELTA TERMINAL</h1>
+            <div class="hero-subtitle">Computing Like It's 1985</div>
+            <p>Step back in time to the golden age of computing. Experience authentic 1980s terminal interface with amber phosphor display, classic monospace typography, and vintage computing aesthetics.</p>
+            <a href="#download" class="cta-button">Boot System</a>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <h2>System Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Amber Terminal</h3>
+                <p>Authentic amber-on-brown color scheme mimicking classic 1980s computer terminals with perfect vintage contrast.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Retro Typography</h3>
+                <p>IBM Plex Mono font with classic spacing, no modern ligatures, and authentic monospace character alignment.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Vintage Interface</h3>
+                <p>Simplified UI without modern distractions, focusing on pure text-based computing experience.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Classic Cursor</h3>
+                <p>Traditional underline cursor with authentic blinking pattern, no smooth animations or modern effects.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Old School Config</h3>
+                <p>Tab-based indentation, 80-column rulers, and classic programming conventions from the 1980s era.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Minimal System</h3>
+                <p>Stripped down interface with essential features only, just like vintage computing systems.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="demo" class="terminal-demo">
+        <div class="terminal-header">
+            DELTA TERMINAL v4.0 - 1985 COMPUTING SYSTEM
+        </div>
+        <div class="terminal-content">
+            <div class="terminal-line">
+                <span class="terminal-prompt">SYSTEM></span>
+                <span class="terminal-command">LOAD "DELTA-TERMINAL"</span>
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-output">LOADING DELTA TERMINAL SYSTEM...</span>
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-output">AMBER DISPLAY INITIALIZED</span>
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-output">VINTAGE TYPOGRAPHY LOADED</span>
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-output">1985 COMPUTING MODE ACTIVE</span>
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-output">READY.</span>
+            </div>
+            <div class="terminal-line">
+                <span class="terminal-prompt">SYSTEM></span>
+                <span class="cursor-blink">_</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="download" class="download">
+        <h2>System Download</h2>
+        <div class="download-info">
+            <p>Download the complete Delta Terminal vintage computing experience. Self-contained system with authentic 1980s interface, amber terminal colors, and classic programming environment.</p>
+        </div>
+        
+        <div class="system-specs">
+            <div class="spec-item">
+                <span>System Size</span>
+                <span class="spec-value">1.8MB</span>
+            </div>
+            <div class="spec-item">
+                <span>Compatibility</span>
+                <span class="spec-value">Windows 10/11</span>
+            </div>
+            <div class="spec-item">
+                <span>Memory</span>
+                <span class="spec-value">Low Usage</span>
+            </div>
+            <div class="spec-item">
+                <span>Era</span>
+                <span class="spec-value">1985 Style</span>
+            </div>
+        </div>
+
+        <a href="download/Delta-V4-Full-SelfContained-Setup-V3Pattern.exe" class="cta-button">
+            Download System
+        </a>
+        
+        <div style="margin-top: 2rem; color: #cc8800;">
+            <p>Version 4.0.0 | Vintage Edition | Free License</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#installation">Install Guide</a>
+            <a href="#manual">User Manual</a>
+            <a href="#support">Support</a>
+            <a href="#history">Computing History</a>
+            <a href="#privacy">Privacy</a>
+        </div>
+        <p>&copy; 2025 Delta Terminal. All rights reserved.</p>
+        <div class="vintage-badge">
+            Celebrating 40 years of personal computing excellence
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add vintage typing effect to terminal demo
+        function typeText(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            const timer = setInterval(() => {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(timer);
+                }
+            }, speed);
+        }
+
+        // Simulate CRT scan lines and occasional flicker
+        function addCRTEffects() {
+            const container = document.querySelector('.crt-container');
+            
+            // Occasional screen flicker
+            setInterval(() => {
+                if (Math.random() < 0.1) { // 10% chance
+                    container.style.opacity = '0.95';
+                    setTimeout(() => {
+                        container.style.opacity = '1';
+                    }, 50);
+                }
+            }, 2000);
+        }
+
+        // Initialize vintage effects
+        document.addEventListener('DOMContentLoaded', function() {
+            addCRTEffects();
+            
+            // Add hover effects to feature cards with retro style
+            document.querySelectorAll('.feature-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.background = '#4d2f1a';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.background = '#3d251a';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

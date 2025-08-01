@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VSC Ventures - Discover Your Perfect Coding Environment</title>
+    <meta name="description" content="Discover specialized VSCode environments tailored for different coding styles. From minimalist zen to cyberpunk hacker themes, find your perfect development workspace.">
+    <meta name="keywords" content="VSCode themes, development environments, coding workspaces, programming IDEs, custom code editors">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #764ba2;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: white;
+            color: #764ba2;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Ventures Grid */
+        .ventures {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .ventures-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .ventures h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+            font-weight: 700;
+        }
+
+        .ventures-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            color: #666;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .ventures-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .venture-card {
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .venture-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .venture-card:hover::before {
+            opacity: 1;
+        }
+
+        .venture-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .venture-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Alpha Card */
+        .alpha-card {
+            background: linear-gradient(135deg, #f5f5f5, #e8e8e8);
+            color: #333;
+        }
+
+        .alpha-card::before {
+            background: linear-gradient(135deg, #ffffff, #f0f0f0);
+        }
+
+        /* Bravo Card - Matrix/Cyberpunk */
+        .bravo-card {
+            background: linear-gradient(135deg, #000000, #003300);
+            color: #00ff41;
+        }
+
+        .bravo-card::before {
+            background: linear-gradient(135deg, #001100, #004400);
+        }
+
+        /* Charlie Card - Holographic */
+        .charlie-card {
+            background: linear-gradient(135deg, #0a0a1a, #1a2050);
+            color: #00d4ff;
+        }
+
+        .charlie-card::before {
+            background: linear-gradient(135deg, #1a2050, #4060ff);
+        }
+
+        /* Delta Card - Retro Terminal */
+        .delta-card {
+            background: linear-gradient(135deg, #1a0f06, #2b1810);
+            color: #ffb000;
+        }
+
+        .delta-card::before {
+            background: linear-gradient(135deg, #2b1810, #3d251a);
+        }
+
+        .venture-card h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .venture-card .tagline {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        .venture-card p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .venture-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .venture-features li {
+            padding: 0.3rem 0;
+            opacity: 0.9;
+        }
+
+        .venture-button {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border: 2px solid currentColor;
+            border-radius: 25px;
+            text-decoration: none;
+            color: inherit;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .venture-button:hover {
+            background: currentColor;
+            color: #333;
+        }
+
+        .bravo-card .venture-button:hover {
+            color: #000;
+        }
+
+        .charlie-card .venture-button:hover {
+            color: #000;
+        }
+
+        .delta-card .venture-button:hover {
+            color: #000;
+        }
+
+        /* Comparison Section */
+        .comparison {
+            padding: 4rem 2rem;
+            background: #f8f9fa;
+        }
+
+        .comparison-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .comparison h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .comparison-table {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparison-table th {
+            background: #667eea;
+            color: white;
+            font-weight: 600;
+        }
+
+        .comparison-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #667eea;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .ventures-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="/" class="logo">VSC VENTURES</a>
+            <ul class="nav-links">
+                <li><a href="#ventures">Ventures</a></li>
+                <li><a href="#comparison">Compare</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#support">Support</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Discover Your Perfect Coding Environment</h1>
+            <p>Choose from specialized VSCode environments designed for different coding styles, workflows, and aesthetics. Each venture offers a unique, professionally crafted development experience.</p>
+            <a href="#ventures" class="hero-cta">Explore Ventures</a>
+        </div>
+    </section>
+
+    <section id="ventures" class="ventures">
+        <div class="ventures-container">
+            <h2>Choose Your Venture</h2>
+            <p class="ventures-subtitle">Each venture is a complete, self-contained development environment with its own theme, workflow optimizations, and professional installation.</p>
+            
+            <div class="ventures-grid">
+                <a href="https://alpha-workspace.com" class="venture-card alpha-card">
+                    <div class="venture-content">
+                        <h3>Alpha Workspace</h3>
+                        <div class="tagline">"Distraction-Free Zen Experience"</div>
+                        <p>Minimalist writing and productivity environment with clean, white aesthetics and focus-first design.</p>
+                        <ul class="venture-features">
+                            <li>✓ Zen minimalist interface</li>
+                            <li>✓ Distraction-free writing</li>
+                            <li>✓ Clean white aesthetics</li>
+                            <li>✓ Focus mode optimization</li>
+                        </ul>
+                        <div class="venture-button">Visit Alpha</div>
+                    </div>
+                </a>
+
+                <a href="https://bravo-code.com" class="venture-card bravo-card">
+                    <div class="venture-content">
+                        <h3>Bravo Code</h3>
+                        <div class="tagline">"Matrix-Style Hacker Environment"</div>
+                        <p>Cyberpunk development experience with authentic Matrix terminal aesthetics and neon green themes.</p>
+                        <ul class="venture-features">
+                            <li>✓ Matrix green-on-black theme</li>
+                            <li>✓ Cyberpunk aesthetics</li>
+                            <li>✓ Hacker-style interface</li>
+                            <li>✓ Terminal-focused workflow</li>
+                        </ul>
+                        <div class="venture-button">Enter Matrix</div>
+                    </div>
+                </a>
+
+                <a href="https://charlie-pro.com" class="venture-card charlie-card">
+                    <div class="venture-content">
+                        <h3>Charlie Pro</h3>
+                        <div class="tagline">"Holographic Professional Workspace"</div>
+                        <p>Future-focused professional environment with holographic effects and advanced business workflows.</p>
+                        <ul class="venture-features">
+                            <li>✓ Holographic blue interface</li>
+                            <li>✓ Professional productivity tools</li>
+                            <li>✓ Advanced collaboration features</li>
+                            <li>✓ Enterprise-ready environment</li>
+                        </ul>
+                        <div class="venture-button">Go Professional</div>
+                    </div>
+                </a>
+
+                <a href="https://delta-terminal.com" class="venture-card delta-card">
+                    <div class="venture-content">
+                        <h3>Delta Terminal</h3>
+                        <div class="tagline">"1980s Vintage Computing"</div>
+                        <p>Retro computing experience with authentic amber terminal interface and classic programming aesthetics.</p>
+                        <ul class="venture-features">
+                            <li>✓ Authentic amber terminal</li>
+                            <li>✓ 1980s computing nostalgia</li>
+                            <li>✓ Vintage monospace typography</li>
+                            <li>✓ Classic programming workflow</li>
+                        </ul>
+                        <div class="venture-button">Boot System</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="comparison" class="comparison">
+        <div class="comparison-container">
+            <h2>Feature Comparison</h2>
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Alpha</th>
+                            <th>Bravo</th>
+                            <th>Charlie</th>
+                            <th>Delta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Theme Style</strong></td>
+                            <td>Minimalist White</td>
+                            <td>Cyberpunk Matrix</td>
+                            <td>Holographic Blue</td>
+                            <td>Vintage Amber</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Target User</strong></td>
+                            <td>Writers, Content Creators</td>
+                            <td>Developers, Hackers</td>
+                            <td>Business Professionals</td>
+                            <td>Retro Computing Fans</td>
+                        </tr>
+                        <tr>
+                            <td><strong>UI Complexity</strong></td>
+                            <td>Minimal</td>
+                            <td>Dark & Focused</td>
+                            <td>Professional</td>
+                            <td>Simplified</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Productivity Focus</strong></td>
+                            <td>Writing & Focus</td>
+                            <td>Coding & Development</td>
+                            <td>Business & Collaboration</td>
+                            <td>Classic Programming</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Font Style</strong></td>
+                            <td>Clean Sans-serif</td>
+                            <td>Bold Monospace</td>
+                            <td>Modern Ligatures</td>
+                            <td>Classic Monospace</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Installation Size</strong></td>
+                            <td>1.8MB</td>
+                            <td>1.9MB</td>
+                            <td>1.9MB</td>
+                            <td>1.8MB</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Best For</strong></td>
+                            <td>Long-form writing</td>
+                            <td>Late-night coding</td>
+                            <td>Business presentations</td>
+                            <td>Nostalgic programming</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#about">About VSC Ventures</a>
+            <a href="#support">Support</a>
+            <a href="#privacy">Privacy Policy</a>
+            <a href="#terms">Terms of Service</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <p>&copy; 2025 VSC Ventures. All rights reserved. | Specialized development environments for every coding style.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add subtle hover effects to venture cards
+        document.querySelectorAll('.venture-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Animate elements on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.venture-card, .comparison-table');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        // Set initial state for animation
+        document.querySelectorAll('.venture-card, .comparison-table').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px)';
+            element.style.transition = 'all 0.6s ease';
+        });
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
