@@ -11,7 +11,11 @@ const path = require('path');
 class SimpleBuildSystem {
     constructor() {
         this.ventures = [
-            'alpha-workspace.com'
+            'alpha-workspace.com',
+            'bravo-code.com',
+            'charlie-pro.com',
+            'delta-terminal.com',
+            'vsc-ventures.com'
         ];
         
         this.srcDir = process.cwd();
@@ -196,6 +200,46 @@ class SimpleBuildSystem {
                 CANONICAL_URL: 'https://alpha-workspace.com',
                 OG_IMAGE: 'https://alpha-workspace.com/images/alpha-og.png',
                 DOWNLOAD_COUNT: '12,847',
+                USER_RATING: '4.8★'
+            },
+            'bravo-code.com': {
+                TITLE: 'Bravo Code - Matrix-Style Development Environment',
+                DESCRIPTION: 'Cyberpunk development experience with authentic Matrix terminal aesthetics and neon green themes.',
+                VENTURE_NAME: 'Bravo Code',
+                VENTURE_NAME_LOWER: 'bravo',
+                CANONICAL_URL: 'https://bravo-code.com',
+                OG_IMAGE: 'https://bravo-code.com/images/bravo-og.png',
+                DOWNLOAD_COUNT: '8,421',
+                USER_RATING: '4.9★'
+            },
+            'charlie-pro.com': {
+                TITLE: 'Charlie Pro - Holographic Professional Workspace',
+                DESCRIPTION: 'Future-focused professional environment with holographic effects and advanced business workflows.',
+                VENTURE_NAME: 'Charlie Pro',
+                VENTURE_NAME_LOWER: 'charlie',
+                CANONICAL_URL: 'https://charlie-pro.com',
+                OG_IMAGE: 'https://charlie-pro.com/images/charlie-og.png',
+                DOWNLOAD_COUNT: '6,238',
+                USER_RATING: '4.7★'
+            },
+            'delta-terminal.com': {
+                TITLE: 'Delta Terminal - Vintage Computing Experience',
+                DESCRIPTION: 'Relive the golden age of computing with authentic 1980s amber terminal interface and vintage aesthetics.',
+                VENTURE_NAME: 'Delta Terminal',
+                VENTURE_NAME_LOWER: 'delta',
+                CANONICAL_URL: 'https://delta-terminal.com',
+                OG_IMAGE: 'https://delta-terminal.com/images/delta-og.png',
+                DOWNLOAD_COUNT: '4,156',
+                USER_RATING: '4.6★'
+            },
+            'vsc-ventures.com': {
+                TITLE: 'VSC Ventures - Discover Your Perfect Coding Environment',
+                DESCRIPTION: 'Choose from specialized VSCode environments designed for different coding styles, workflows, and aesthetics.',
+                VENTURE_NAME: 'VSC Ventures',
+                VENTURE_NAME_LOWER: 'vscventures',
+                CANONICAL_URL: 'https://vsc-ventures.com',
+                OG_IMAGE: 'https://vsc-ventures.com/images/platform-og.png',
+                DOWNLOAD_COUNT: '31,662',
                 USER_RATING: '4.8★'
             }
         };
