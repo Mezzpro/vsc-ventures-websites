@@ -23,8 +23,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
         
-      - name: Build websites
+      - name: Build Alpha and Bravo (main build)
         run: npm run build
+        
+      - name: Build Charlie Pro (standalone)
+        run: node scripts/charlie-build.js
+        
+      - name: Build Delta Terminal (standalone)
+        run: node scripts/delta-build.js
         
       - name: Run tests
         run: npm run test
