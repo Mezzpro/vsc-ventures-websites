@@ -4,7 +4,7 @@
   "description": "Multi-venture web distribution system for VSCode Ventures V5",
   "main": "build.js",
   "scripts": {
-    "build": "node scripts/build.js",
+    "build": "node scripts/simple-build.js",
     "dev": "node scripts/dev-server.js",
     "test": "jest",
     "test:watch": "jest --watch",
