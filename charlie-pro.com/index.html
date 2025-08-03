@@ -1,365 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charlie Pro - Holographic Professional Workspace</title>
-    <meta name="description" content="Experience the future of professional development with Charlie Pro - featuring holographic interfaces, advanced productivity tools, and cutting-edge business workflows.">
-    <meta name="keywords" content="professional code editor, holographic interface, business development environment, futuristic IDE, productivity workspace">
-    <!-- <link rel="icon" type="image/x-icon" href="/favicon.ico"> -->
+    <title>Charlie Pro - Download</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-            background: #0a0a1a;
-            color: #e0e6ff;
-            line-height: 1.4;
-            overflow-x: hidden;
-            font-weight: normal;
-        }
-
-        /* Holographic Effect */
-        .holographic-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a40 50%, #0a0a1a 100%);
-            background-image: 
-                linear-gradient(transparent 50%, rgba(160, 180, 255, 0.02) 50%);
-            background-size: 100% 3px;
-            animation: holographic-pulse 2s infinite ease-in-out;
-        }
-
-        .holographic-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at center, transparent 40%, rgba(10, 10, 26, 0.8) 100%);
-            pointer-events: none;
-        }
-
-        @keyframes holographic-pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.95; }
-        }
-
-        /* Main Content */
-        .main-container {
-            min-height: 100vh;
-            position: relative;
-            z-index: 1;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .logo {
-            font-size: 4rem;
-            font-weight: 300;
-            color: #8090ff;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 20px rgba(128, 144, 255, 0.5);
-            letter-spacing: 3px;
-        }
-
-        .tagline {
-            font-size: 1.5rem;
-            color: #c0c8ff;
-            margin-bottom: 0.5rem;
-            font-weight: 300;
-        }
-
-        .subtitle {
-            font-size: 1.1rem;
-            color: #a0a8ff;
-            opacity: 0.8;
-        }
-
-        /* Feature Grid */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 1000px;
-            margin: 3rem 0;
-        }
-
-        .feature {
-            background: rgba(128, 144, 255, 0.1);
-            border: 1px solid rgba(128, 144, 255, 0.2);
-            border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .feature:hover {
-            background: rgba(128, 144, 255, 0.15);
-            border-color: rgba(128, 144, 255, 0.4);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(128, 144, 255, 0.2);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #8090ff;
-        }
-
-        .feature h3 {
-            color: #e0e6ff;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-            font-weight: 500;
-        }
-
-        .feature p {
-            color: #c0c8ff;
-            font-size: 0.95rem;
-            opacity: 0.9;
-        }
-
-        /* Download Section */
-        .download-section {
-            text-align: center;
-            margin: 3rem 0;
-            padding: 3rem;
-            background: rgba(128, 144, 255, 0.05);
-            border-radius: 16px;
-            border: 1px solid rgba(128, 144, 255, 0.1);
-        }
-
-        .download-title {
-            font-size: 2rem;
-            color: #8090ff;
-            margin-bottom: 1rem;
-            font-weight: 300;
-        }
-
-        .download-description {
-            color: #c0c8ff;
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-        }
-
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-bottom: 2rem;
-        }
-
-        .stat {
+            font-family: Arial, sans-serif;
+            background: #001122;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
             text-align: center;
         }
-
-        .stat-number {
-            font-size: 2rem;
-            color: #8090ff;
-            font-weight: 500;
-            display: block;
+        h1 {
+            color: #4488ff;
+            font-size: 48px;
+            margin: 50px 0;
         }
-
-        .stat-label {
-            color: #a0a8ff;
-            font-size: 0.9rem;
-            opacity: 0.8;
+        p {
+            font-size: 18px;
+            margin: 20px 0;
         }
-
-        .cta-button {
+        .download-button {
             display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #4488ff;
             color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
+            padding: 15px 30px;
             text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            border-radius: 5px;
+            font-size: 20px;
+            margin: 30px 0;
         }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
-            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-        }
-
-        /* Technical Specs */
-        .specs {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            max-width: 800px;
-            margin: 2rem 0;
-        }
-
-        .spec {
-            display: flex;
-            justify-content: space-between;
-            padding: 1rem;
-            background: rgba(128, 144, 255, 0.05);
-            border-radius: 8px;
-            border-left: 3px solid #8090ff;
-        }
-
-        .spec-label {
-            color: #c0c8ff;
-            font-weight: 500;
-        }
-
-        .spec-value {
-            color: #8090ff;
-            font-weight: 500;
-        }
-
-        /* Footer */
-        .footer {
-            margin-top: 4rem;
-            text-align: center;
-            color: #a0a8ff;
-            opacity: 0.7;
-            font-size: 0.9rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .main-container {
-                padding: 1rem;
-            }
-            
-            .logo {
-                font-size: 3rem;
-            }
-            
-            .tagline {
-                font-size: 1.2rem;
-            }
-            
-            .features {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            
-            .stats {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-            
-            .specs {
-                grid-template-columns: 1fr;
-            }
+        .download-button:hover {
+            background: #6699ff;
         }
     </style>
 </head>
 <body>
-    <div class="holographic-container"></div>
+    <h1>CHARLIE PRO</h1>
+    <p>Professional Development Environment</p>
+    <p>Download and test the installer below:</p>
     
-    <div class="main-container">
-        <header class="header">
-            <h1 class="logo">CHARLIE PRO</h1>
-            <p class="tagline">Holographic Professional Workspace</p>
-            <p class="subtitle">Experience the future of professional development</p>
-        </header>
-
-        <section class="features">
-            <div class="feature">
-                <div class="feature-icon">🔮</div>
-                <h3>Holographic Interface</h3>
-                <p>Immersive 3D-like visual elements with depth and transparency effects</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">⚡</div>
-                <h3>Advanced Productivity</h3>
-                <p>Streamlined workflows designed for professional developers and teams</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">🚀</div>
-                <h3>Future-Ready</h3>
-                <p>Built with cutting-edge technology for tomorrow's development needs</p>
-            </div>
-            <div class="feature">
-                <div class="feature-icon">💼</div>
-                <h3>Business Focused</h3>
-                <p>Enterprise-grade features with professional polish and reliability</p>
-            </div>
-        </section>
-
-        <section class="download-section">
-            <h2 class="download-title">Download Charlie Pro</h2>
-            <p class="download-description">
-                Transform your development experience with holographic interfaces and professional-grade tools
-            </p>
-            
-            <div class="stats">
-                <div class="stat">
-                    <span class="stat-number">6,238</span>
-                    <span class="stat-label">Downloads</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">4.7★</span>
-                    <span class="stat-label">User Rating</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">1.9MB</span>
-                    <span class="stat-label">Download Size</span>
-                </div>
-            </div>
-        </div>
-
-        <a href="download/charlie-workspace-installer-v1.1.exe" class="cta-button">
-            ⬇ DOWNLOAD CHARLIE PRO
-        </a>
-        
-        <div style="margin-top: 2rem; color: #8090ff; font-size: 1.1rem;">
-            <p>Version 4.0.0 | Professional Edition | Free License</p>
-            <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.8;">Compatible with Windows 10/11 • No registration required</p>
-        </div>
-
-        <div class="specs">
-            <div class="spec">
-                <span class="spec-label">Interface</span>
-                <span class="spec-value">Holographic</span>
-            </div>
-            <div class="spec">
-                <span class="spec-label">Theme</span>
-                <span class="spec-value">Professional</span>
-            </div>
-            <div class="spec">
-                <span class="spec-label">Focus</span>
-                <span class="spec-value">Business</span>
-            </div>
-            <div class="spec">
-                <span class="spec-label">Era</span>
-                <span class="spec-value">Future Style</span>
-            </div>
-        </div>
-        </section>
-
-        <footer class="footer">
-            <p>© 2025 Charlie Pro. Part of VSCode Ventures V5 Platform.</p>
-            <p>Professional development environment with holographic interface technology.</p>
-        </footer>
-    </div>
+    <a href="download/charlie-workspace-installer-v1.1.exe" class="download-button">
+        Download Charlie Pro
+    </a>
+    
+    <p>Version 1.1.0 | Windows 10/11 | Free</p>
 </body>
 </html>
