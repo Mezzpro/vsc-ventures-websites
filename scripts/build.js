@@ -8,8 +8,8 @@
 const fs = require('fs-extra');
 const path = require('path');
 const glob = require('glob');
-const chalk = require('chalk');
-const ora = require('ora');
+// const chalk = require('chalk');
+// const ora = require('ora');
 
 class VentureBuildSystem {
     constructor() {
@@ -27,7 +27,7 @@ class VentureBuildSystem {
     }
 
     async build() {
-        console.log(chalk.blue('🏗️  VSCode Ventures V5 Build System\n'));
+        console.log('🏗️  VSCode Ventures V5 Build System\n');
         
         try {
             await this.clean();
@@ -37,10 +37,10 @@ class VentureBuildSystem {
             await this.generateMetadata();
             await this.validateBuild();
             
-            console.log(chalk.green('\n✅ Build completed successfully!'));
+            console.log('\n✅ Build completed successfully!');
             this.showBuildSummary();
         } catch (error) {
-            console.error(chalk.red('\n❌ Build failed:'), error.message);
+            console.error('\n❌ Build failed:', error.message);
             process.exit(1);
         }
     }
@@ -439,13 +439,13 @@ Sitemap: https://${domain}/sitemap.xml
     }
 
     showBuildSummary() {
-        console.log(chalk.cyan('\n📊 Build Summary:'));
+        console.log('\n📊 Build Summary:');
         console.log(`• Ventures built: ${this.ventures.length}`);
         console.log(`• Output directory: ${this.distDir}`);
         console.log(`• Build time: ${new Date().toLocaleString()}`);
         
-        console.log(chalk.cyan('\n🚀 Ready for deployment to Cloudflare Pages!'));
-        console.log(chalk.gray('Run "npm run deploy" to deploy all ventures.'));
+        console.log('\n🚀 Ready for deployment to Cloudflare Pages!');
+        console.log('Run "npm run deploy" to deploy all ventures.');
     }
 }
 
