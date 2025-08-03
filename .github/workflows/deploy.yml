@@ -49,23 +49,23 @@ jobs:
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
         if: github.ref == 'refs/heads/main'
         
-      - name: Deploy Holographic Pro to Cloudflare Pages
+      - name: Deploy Charlie Pro to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: holographic-pro
-          directory: dist/holographic-pro.com
+          projectName: charlie-pro
+          directory: dist/charlie-pro.com
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
         if: github.ref == 'refs/heads/main'
         
-      - name: Deploy Retro Terminal to Cloudflare Pages
+      - name: Deploy Delta Terminal to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: retro-terminal
-          directory: dist/retro-terminal.com
+          projectName: delta-terminal
+          directory: dist/delta-terminal.com
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
         if: github.ref == 'refs/heads/main'
         

@@ -16,8 +16,8 @@ class VentureBuildSystem {
         this.ventures = [
             'alpha-workspace.com',
             'cyberpunk-code.com', 
-            'holographic-pro.com',
-            'retro-terminal.com',
+            'charlie-pro.com',
+            'delta-terminal.com',
             'vsc-ventures.com'
         ];
         
